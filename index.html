@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     YOUR PAGE TITLE
+     This shows in the browser tab and in Google results.
+     ============================================================ -->
+<title>Work With Me | Your Name, Realtor</title>
+<meta name="description" content="Tell me a little about what you are looking for and I will be in touch.">
+
+<style>
+/* ==============================================================
+   1. YOUR SETTINGS
+   Change these and the whole page changes.
+   Everything below this block uses these values.
+   ============================================================== */
+:root {
+  --brand:      #2F4F45;   /* main color: headings, buttons */
+  --brand-dark: #22392F;   /* darker version, used on hover */
+  --text:       #23211E;   /* body text */
+  --text-soft:  #6B655C;   /* lighter text, labels, fine print */
+  --bg:         #FDFCF9;   /* page background */
+  --panel:      #F5F2EA;   /* form background */
+  --line:       #E2DDD1;   /* borders */
+
+  --font-heading: Georgia, 'Times New Roman', serif;
+  --font-body:    -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --radius: 6px;           /* how rounded corners are. 0 for square */
+  --max-width: 620px;      /* how wide the page content gets */
+}
+
+/* ==============================================================
+   2. STYLING
+   You can ignore this section. Claude can change it for you.
+   ============================================================== */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 17px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding: 48px 22px 64px;
+}
+.eyebrow {
+  font-size: .72rem;
+  letter-spacing: .16em;
+  text-transform: uppercase;
+  color: var(--text-soft);
+  font-weight: 700;
+  margin: 0 0 10px;
+}
+h1 {
+  font-family: var(--font-heading);
+  font-size: clamp(1.9rem, 5vw, 2.6rem);
+  line-height: 1.2;
+  font-weight: 500;
+  margin: 0 0 14px;
+  color: var(--brand);
+}
+.sub {
+  font-size: 1.05rem;
+  color: var(--text-soft);
+  margin: 0 0 34px;
+  max-width: 46ch;
+}
+form {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+}
+label {
+  display: block;
+  font-size: .78rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--text-soft);
+  margin: 0 0 6px;
+}
+.field { margin-bottom: 18px; }
+input, select, textarea {
+  width: 100%;
+  padding: 11px 13px;
+  font-family: inherit;
+  font-size: 1rem;
+  color: var(--text);
+  background: #fff;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+input:focus, select:focus, textarea:focus {
+  outline: 2px solid var(--brand);
+  outline-offset: 1px;
+  border-color: var(--brand);
+}
+textarea { min-height: 88px; resize: vertical; }
+button {
+  width: 100%;
+  padding: 14px 18px;
+  font-family: inherit;
+  font-size: .95rem;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: #fff;
+  background: var(--brand);
+  border: 0;
+  border-radius: var(--radius);
+  cursor: pointer;
+}
+button:hover { background: var(--brand-dark); }
+button[disabled] { opacity: .6; cursor: default; }
+.fineprint {
+  font-size: .82rem;
+  color: var(--text-soft);
+  margin: 14px 0 0;
+  text-align: center;
+}
+.done {
+  display: none;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 34px 24px;
+  text-align: center;
+}
+.done h2 {
+  font-family: var(--font-heading);
+  color: var(--brand);
+  margin: 0 0 8px;
+  font-weight: 500;
+}
+.done p { margin: 0; color: var(--text-soft); }
+.err {
+  display: none;
+  color: #8A2B2B;
+  font-size: .88rem;
+  margin: 12px 0 0;
+  text-align: center;
+}
+footer {
+  margin-top: 40px;
+  padding-top: 22px;
+  border-top: 1px solid var(--line);
+  font-size: .85rem;
+  color: var(--text-soft);
+  text-align: center;
+}
+footer a { color: var(--brand); }
+</style>
+</head>
+
+<body>
+<div class="wrap">
+
+  <!-- ============================================================
+       3. YOUR HEADLINE
+       Change these three lines to sound like you.
+       ============================================================ -->
+  <p class="eyebrow">Your Name, Realtor</p>
+  <h1>Let's figure out your next move.</h1>
+  <p class="sub">Tell me a little about where you are at. Takes 60 seconds and there is no pressure on the other end of it.</p>
+
+  <!-- ============================================================
+       4. YOUR FORM
+
+       IMPORTANT: replace YOUR_FORM_ID below with your own Formspree
+       ID. It is the part after /f/ in your Formspree endpoint.
+
+       Example: if Formspree gives you
+         https://formspree.io/f/abcd1234
+       then you want
+         action="https://formspree.io/f/abcd1234"
+       ============================================================ -->
+  <form id="leadform" action="https://formspree.io/f/YOUR_FORM_ID" method="POST">
+
+    <div class="field">
+      <label for="name">Your name</label>
+      <input id="name" name="name" type="text" required>
+    </div>
+
+    <div class="field">
+      <label for="email">Email</label>
+      <input id="email" name="email" type="email" required>
+    </div>
+
+    <div class="field">
+      <label for="phone">Phone</label>
+      <input id="phone" name="phone" type="tel">
+    </div>
+
+    <!-- Change these options to match the kinds of clients you want -->
+    <div class="field">
+      <label for="situation">What is going on?</label>
+      <select id="situation" name="situation">
+        <option>Thinking about selling</option>
+        <option>Looking to buy</option>
+        <option>Selling and buying at the same time</option>
+        <option>Moving to the area</option>
+        <option>Just gathering information</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="timeline">Timeline</label>
+      <select id="timeline" name="timeline">
+        <option>As soon as possible</option>
+        <option>1 to 3 months</option>
+        <option>3 to 6 months</option>
+        <option>Still just looking</option>
+      </select>
+    </div>
+
+    <div class="field">
+      <label for="message">Anything you want me to know</label>
+      <textarea id="message" name="message"></textarea>
+    </div>
+
+    <button type="submit" id="submitbtn">Send it over</button>
+    <p class="fineprint">I read every one of these myself.</p>
+    <p class="err" id="err">Something went wrong. Please try again, or text me instead.</p>
+  </form>
+
+  <!-- Shows after they submit. Change this wording too. -->
+  <div class="done" id="done">
+    <h2>Got it, thank you.</h2>
+    <p>I will be in touch shortly.</p>
+  </div>
+
+  <!-- ============================================================
+       5. YOUR FOOTER
+       Put your real phone number and license number here.
+       ============================================================ -->
+  <footer>
+    <p>
+      Your Name, Realtor<br>
+      The Perry Group, Real Broker LLC<br>
+      <a href="tel:8015551234">(801) 555-1234</a><br>
+      License #00000000-SA00
+    </p>
+  </footer>
+
+</div>
+
+<script>
+/* ==============================================================
+   6. FORM HANDLING
+   This keeps people on your page after they submit instead of
+   sending them to a Formspree page. You do not need to change it.
+   ============================================================== */
+var form = document.getElementById('leadform');
+var btn  = document.getElementById('submitbtn');
+var done = document.getElementById('done');
+var err  = document.getElementById('err');
+
+form.addEventListener('submit', function (e) {
+  e.preventDefault();
+  err.style.display = 'none';
+  btn.disabled = true;
+  btn.textContent = 'Sending...';
+
+  fetch(form.action, {
+    method: 'POST',
+    body: new FormData(form),
+    headers: { 'Accept': 'application/json' }
+  })
+  .then(function (res) {
+    if (res.ok) {
+      form.style.display = 'none';
+      done.style.display = 'block';
+    } else {
+      throw new Error('bad response');
+    }
+  })
+  .catch(function () {
+    err.style.display = 'block';
+    btn.disabled = false;
+    btn.textContent = 'Send it over';
+  });
+});
+</script>
+</body>
+</html>
